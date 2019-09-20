@@ -1,18 +1,19 @@
 'use strict';
 
-import React,{
-    PropTypes
-} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
-    View,
+	Image,
+	View,
     StyleSheet,
     Dimensions,
     Modal,
     Text,
     ScrollView,
     TouchableOpacity,
-    Platform
+    Platform,
+	ViewPropTypes,
 } from 'react-native';
 
 import styles from './style';
@@ -24,15 +25,15 @@ const propTypes = {
     data: PropTypes.array,
     onChange: PropTypes.func,
     initValue: PropTypes.string,
-    style: View.propTypes.style,
-    selectStyle: View.propTypes.style,
-    optionStyle: View.propTypes.style,
+    style: ViewPropTypes.style,
+    selectStyle: ViewPropTypes.style,
+    optionStyle: ViewPropTypes.style,
     optionTextStyle: Text.propTypes.style,
-    sectionStyle: View.propTypes.style,
+    sectionStyle: ViewPropTypes.style,
     sectionTextStyle: Text.propTypes.style,
-    cancelStyle: View.propTypes.style,
+    cancelStyle: ViewPropTypes.style,
     cancelTextStyle: Text.propTypes.style,
-    overlayStyle: View.propTypes.style,
+    overlayStyle: ViewPropTypes.style,
     cancelText: PropTypes.string
 };
 
@@ -111,6 +112,7 @@ export default class ModalPicker extends BaseComponent {
     }
 
     renderOption(option) {
+		// <Image style={{width: 25, height: 25, }} source={{uri: option.imageUrl}}/>
         return (
             <TouchableOpacity key={option.key} onPress={()=>this.onChange(option)}>
                 <View style={[styles.optionStyle, this.props.optionStyle]}>
